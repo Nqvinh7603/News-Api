@@ -12,15 +12,10 @@ const News = () => {
   };
   React.useEffect(() => {
     handleFetchData.current();
-  }, [query]);
+  }, []);
   return (
     <div>
-      <input
-        type="text"
-        className="border border-green-500 text-black p-5 mb-5"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
+      <input type="text" className="border border-green" />
       {hits.length > 0 &&
         hits.map((item, index) => <h3 key={item.title}>{item.title}</h3>)}
     </div>

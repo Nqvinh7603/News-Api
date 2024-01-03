@@ -12,7 +12,7 @@ const News = () => {
   };
   React.useEffect(() => {
     handleFetchData.current();
-  }, [query]);
+  }, []);
   return (
     <div>
       <input

@@ -1,6 +1,7 @@
 import React from "react";
 import News from "./News";
-import "./App.css";
+import "./App.scss";
+
 const App = () => {
   return (
     <div>

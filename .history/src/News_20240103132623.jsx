@@ -12,12 +12,12 @@ const News = () => {
   };
   React.useEffect(() => {
     handleFetchData.current();
-  }, [query]);
+  }, []);
   return (
     <div>
       <input
         type="text"
-        className="border border-green-500 text-black p-5 mb-5"
+        className="border border-green-500 text-black"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
