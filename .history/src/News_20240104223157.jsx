@@ -96,7 +96,7 @@ const News = () => {
             opacity: state.loading ? "0.25" : "1",
           }}
         >
-          Tìm kiếm
+          Fetching
         </button>
       </div>
       {state.loading && (
