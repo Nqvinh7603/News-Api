@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useRef, useState } from "react";
 import axios from "axios";
 const News = () => {
@@ -12,9 +11,8 @@ const News = () => {
       const response = await axios.get(
         `https://hn.algolia.com/api/v1/search?query=${query}`
       );
-      setHits(response.data?.hits || []);
-      setLoading(false);
     } catch (error) {
+      setHits(response.data?.hits || []);
       setLoading(false);
     }
   };

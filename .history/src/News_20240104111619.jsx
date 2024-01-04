@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import React, { useRef, useState } from "react";
 import axios from "axios";
 const News = () => {
@@ -8,15 +7,11 @@ const News = () => {
   const handleFetchData = useRef({});
   handleFetchData.current = async () => {
     setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://hn.algolia.com/api/v1/search?query=${query}`
-      );
-      setHits(response.data?.hits || []);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-    }
+    const response = await axios.get(
+      `https://hn.algolia.com/api/v1/search?query=${query}`
+    );
+    setHits(response.data?.hits || []);
+    setLoading(false);
   };
   React.useEffect(() => {
     handleFetchData.current();
@@ -30,7 +25,7 @@ const News = () => {
         onChange={(e) => setQuery(e.target.value)}
       />
       {loading && (
-        <div className="loading w-8 h-8 rounded-full border-blue-500 border-4 border-r-4 border-r-transparent animate-spin"></div>
+        <div className="loading w-8 h-8 rounded-full border-blue-500"></div>
       )}
       {!loading &&
         hits.length > 0 &&
