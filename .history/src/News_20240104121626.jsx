@@ -9,12 +9,14 @@ const News = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const handleFetchData = useRef({});
   const [url, setUrl] = useState(
-    "https://hn.algolia.com/api/v1/search?query=${query}"
+    "https://hn.algolia.com/api/v1/search?query=''"
   );
   handleFetchData.current = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(
+        `https://hn.algolia.com/api/v1/search?query=${query}`
+      );
       setHits(response.data?.hits || []);
       setLoading(false);
     } catch (error) {
@@ -38,12 +40,7 @@ const News = () => {
           defaultValue={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button
-          onClick={() =>
-            setUrl(`https://hn.algolia.com/api/v1/search?query=${query}`)
-          }
-          className="bg-blue-500 text-white font-semibold p-5 rounded-md flex-shrink-0"
-        >
+        <button onClick={} className="bg-blue-500 text-white font-semibold p-5 rounded-md flex-shrink-0">
           TÌm kiếm
         </button>
       </div>
@@ -56,16 +53,11 @@ const News = () => {
       <div className="flex flex-wrap gap-5">
         {!loading &&
           hits.length > 0 &&
-          hits.map((item, index) => {
-            if (!item.title || item.title.length <= 0) {
-              return null;
-            }
-            return (
-              <h3 className="p-3 bg-gray-100 rounded-md" key={item.title}>
-                {item.title}
-              </h3>
-            );
-          })}
+          hits.map((item, index) => (
+            <h3 className="p-3 bg-gray-100 rounded-md" key={item.title}>
+              {item.title}
+            </h3>
+          ))}
       </div>
     </div>
   );

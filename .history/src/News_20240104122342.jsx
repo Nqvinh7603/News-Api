@@ -57,7 +57,7 @@ const News = () => {
         {!loading &&
           hits.length > 0 &&
           hits.map((item, index) => {
-            if (!item.title || item.title.length <= 0) {
+            if (item.title.length <= 0) {
               return null;
             }
             return (

@@ -14,7 +14,9 @@ const News = () => {
   handleFetchData.current = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(
+        `https://hn.algolia.com/api/v1/search?query=${query}`
+      );
       setHits(response.data?.hits || []);
       setLoading(false);
     } catch (error) {
@@ -56,16 +58,11 @@ const News = () => {
       <div className="flex flex-wrap gap-5">
         {!loading &&
           hits.length > 0 &&
-          hits.map((item, index) => {
-            if (!item.title || item.title.length <= 0) {
-              return null;
-            }
-            return (
-              <h3 className="p-3 bg-gray-100 rounded-md" key={item.title}>
-                {item.title}
-              </h3>
-            );
-          })}
+          hits.map((item, index) => (
+            <h3 className="p-3 bg-gray-100 rounded-md" key={item.title}>
+              {item.title}
+            </h3>
+          ))}
       </div>
     </div>
   );

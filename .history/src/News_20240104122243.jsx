@@ -57,15 +57,12 @@ const News = () => {
         {!loading &&
           hits.length > 0 &&
           hits.map((item, index) => {
-            if (!item.title || item.title.length <= 0) {
-              return null;
-            }
-            return (
-              <h3 className="p-3 bg-gray-100 rounded-md" key={item.title}>
-                {item.title}
-              </h3>
-            );
-          })}
+            
+          }
+            <h3 className="p-3 bg-gray-100 rounded-md" key={item.title}>
+              {item.title}
+            </h3>
+          ))}
       </div>
     </div>
   );
