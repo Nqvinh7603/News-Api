@@ -32,7 +32,7 @@ const News = () => {
       <input
         type="text"
         className="border border-green-500 text-black p-5 mb-5"
-        defaultValue={query}
+        value={query}
         onChange={handleUpdateQuery}
       />
       {loading && (

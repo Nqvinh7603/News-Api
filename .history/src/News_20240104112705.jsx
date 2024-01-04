@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import lodash from "lodash";
 const News = () => {
   const [hits, setHits] = useState([]);
   const [query, setQuery] = useState("react");
@@ -12,7 +11,7 @@ const News = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://hn.algolia.com/api/v1/search?query=${query}`
+        `https://h.algolia.com/api/v1/search?query=${query}`
       );
       setHits(response.data?.hits || []);
       setLoading(false);
@@ -21,9 +20,6 @@ const News = () => {
       setErrorMessage(`Đã xảy ra lỗi ${error}`);
     }
   };
-  const handleUpdateQuery = lodash.debounce((e) => {
-    setQuery(e.target.value);
-  }, 500);
   React.useEffect(() => {
     handleFetchData.current();
   }, [query]);
@@ -32,8 +28,8 @@ const News = () => {
       <input
         type="text"
         className="border border-green-500 text-black p-5 mb-5"
-        defaultValue={query}
-        onChange={handleUpdateQuery}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
       />
       {loading && (
         <div className="loading w-8 h-8 rounded-full border-blue-500 border-4 border-r-4 border-r-transparent animate-spin"></div>

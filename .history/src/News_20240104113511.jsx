@@ -21,9 +21,9 @@ const News = () => {
       setErrorMessage(`Đã xảy ra lỗi ${error}`);
     }
   };
-  const handleUpdateQuery = lodash.debounce((e) => {
-    setQuery(e.target.value);
-  }, 500);
+  const handleUpdateQuery = (vale) => {
+    setQuery(value);
+  };
   React.useEffect(() => {
     handleFetchData.current();
   }, [query]);
@@ -32,7 +32,7 @@ const News = () => {
       <input
         type="text"
         className="border border-green-500 text-black p-5 mb-5"
-        defaultValue={query}
+        value={query}
         onChange={handleUpdateQuery}
       />
       {loading && (
