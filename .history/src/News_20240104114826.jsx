@@ -31,7 +31,7 @@ const News = () => {
     <div className="bg-white mx-auto mt-5 p-5 rounded-lg shadow-md w-2/4">
       <input
         type="text"
-        className="border border-gray-200 p-5 block w-full rounded-md mt-5 mb-5 transition-all focus:border-blue-400 "
+        className="border border-gray-200 p-5 block w-full rounded-md mb-5 transition-all focus:border-blue-400 "
         placeholder="Nhập tìm kiếm của bạn"
         defaultValue={query}
         onChange={handleUpdateQuery}
@@ -39,18 +39,11 @@ const News = () => {
       {loading && (
         <div className="loading w-8 h-8 rounded-full border-blue-500 border-4 border-r-4 border-r-transparent animate-spin mx-auto my-10"></div>
       )}
-      {!loading && errorMessage && (
-        <p className="text-red-400 my-5">{errorMessage}</p>
-      )}
-      <div className="flex flex-wrap gap-5">
-        {!loading &&
-          hits.length > 0 &&
-          hits.map((item, index) => (
-            <h3 className="p-3 bg-gray-100 rounded-md" key={item.title}>
-              {item.title}
-            </h3>
-          ))}
-      </div>
+      {!loading && errorMessage && <p>{errorMessage}</p>}
+      <div className="flex flex-wrap gap-5"></div>
+      {!loading &&
+        hits.length > 0 &&
+        hits.map((item, index) => <h3 key={item.title}>{item.title}</h3>)}
     </div>
   );
 };

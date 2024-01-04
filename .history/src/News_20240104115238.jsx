@@ -39,9 +39,7 @@ const News = () => {
       {loading && (
         <div className="loading w-8 h-8 rounded-full border-blue-500 border-4 border-r-4 border-r-transparent animate-spin mx-auto my-10"></div>
       )}
-      {!loading && errorMessage && (
-        <p className="text-red-400 my-5">{errorMessage}</p>
-      )}
+      {!loading && errorMessage && <p className="text-red">{errorMessage}</p>}
       <div className="flex flex-wrap gap-5">
         {!loading &&
           hits.length > 0 &&
